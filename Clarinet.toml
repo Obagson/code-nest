@@ -4,6 +4,10 @@ authors = []
 description = ""
 telemetry = false
 requirements = []
+[contracts.code-nest-reputation]
+path = "contracts/code-nest-reputation.clar"
+depends_on = []
+
 [contracts.code-nest-reviews]
 path = "contracts/code-nest-reviews.clar"
 depends_on = []
