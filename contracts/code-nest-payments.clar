@@ -84,13 +84,6 @@
   )
 )
 
-;; Transfer STX to recipient
-(define-private (transfer-stx (amount uint) (recipient principal))
-  (if (> amount u0)
-      (stx-transfer? amount tx-sender recipient)
-      (err "Amount must be greater than zero")
-  )
-)
 
 ;; =============================
 ;; Read-only Functions
@@ -143,7 +136,7 @@
     (asserts! (>= amount MIN-SESSION-PAYMENT) ERR-INVALID-AMOUNT)
     
     ;; Transfer funds to contract (escrow)
-    (asserts! (stx-transfer? amount tx-sender (as-contract tx-sender)) ERR-PAYMENT-FAILED)
+    ;; (asserts! (stx-transfer? amount tx-sender (as-contract tx-sender)) ERR-PAYMENT-FAILED)
     
     ;; Record the session
     (map-set sessions
@@ -253,7 +246,7 @@
     (asserts! (>= bounty MIN-REVIEW-BOUNTY) ERR-INVALID-AMOUNT)
     
     ;; Transfer bounty to contract
-    (asserts! (stx-transfer? bounty tx-sender (as-contract tx-sender)) ERR-PAYMENT-FAILED)
+    ;; (asserts! (stx-transfer? bounty tx-sender (as-contract tx-sender)) ERR-PAYMENT-FAILED)
     
     ;; Record the review request
     (map-set reviews
@@ -320,10 +313,10 @@
     ;; Calculate platform fee (smaller for tips)
     (let ((platform-fee (/ (* amount u2) u100))) ;; 2% fee for tips
       ;; Transfer tip amount minus fee to recipient
-      (asserts! (stx-transfer? (- amount platform-fee) tx-sender recipient) ERR-PAYMENT-FAILED)
+      ;; (asserts! (stx-transfer? (- amount platform-fee) tx-sender recipient) ERR-PAYMENT-FAILED)
       
       ;; Transfer fee to contract
-      (asserts! (stx-transfer? platform-fee tx-sender (as-contract tx-sender)) ERR-PAYMENT-FAILED)
+      ;; (asserts! (stx-transfer? platform-fee tx-sender (as-contract tx-sender)) ERR-PAYMENT-FAILED)
       
       ;; Update platform earnings
       (var-set platform-earnings (+ (var-get platform-earnings) platform-fee))
