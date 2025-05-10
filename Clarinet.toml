@@ -8,18 +8,6 @@ requirements = []
 path = "contracts/code-nest-payments.clar"
 depends_on = []
 
-[contracts.code-nest-reputation]
-path = "contracts/code-nest-reputation.clar"
-depends_on = []
-
-[contracts.code-nest-reviews]
-path = "contracts/code-nest-reviews.clar"
-depends_on = []
-
-[contracts.code-nest-sessions]
-path = "contracts/code-nest-sessions.clar"
-depends_on = []
-
 [repl]
 costs_version = 2
 parser_version = 2
